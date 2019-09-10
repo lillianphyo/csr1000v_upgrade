@@ -1,0 +1,58 @@
+---
+# tasks file for ftp
+
+- name: check image was already exist in bootflash
+  ios_command:
+    commands: 'dir bootflash: | include {{ new_image }}'
+  register: check_image
+  
+- name: fetch new image to bootflash
+  vars:
+    ansible_command_timeout: 2400
+  ios_command:
+    commands:
+      - command: 'copy ftp://{{ ftp_server_ip }}/{{ new_image }} bootflash:'
+        prompt: 'Destination filename \[{{ new_image }}\]'
+        answer: "\r"
+    interval: 10
+    retries: "{{ number_of_retries | int }}"
+    wait_for: result[0] contains OK
+  when: check_image.stdout[0].find( "{{ new_image }}" )  == -1
+
+- name: list bootflash to check fetch image
+  ios_command:
+    commands: 'dir bootflash:'
+
+- name: verify image file
+  vars:
+    ansible_command_timeout: 1200
+  ios_command:
+    commands: 'verify bootflash:/{{ new_image }}'
+  register: image_verification_results
+
+- name: Set image_integrity_check to pass/fail
+  set_fact:
+    image_integrity_check: "pass"
+  when: image_verification_results.stdout[0].find("Digital signature successfully verified") != -1
+
+- name: Fail Task if Image Integrity Check Fails
+  fail:
+    msg: "Image Integrity Check Fails. Please check the uploaded image!"
+  when: image_verification_results.stdout[0].find('Embedded hash verification successful.') == -1
+    
+- name: Verify MD5 Hash of Image File
+  vars:
+    ansible_command_timeout: 1200
+  ios_command:
+    commands: 'verify /md5 bootflash:/{{ new_image }} {{ md5_hash }}'
+  register: md5_hash_verification_results
+ 
+- name: Set md5_hash_verification to pass/fail
+  set_fact:
+    md5_hash_verification: "pass"
+  when: md5_hash_verification_results.stdout[0].find('Verified') != -1
+    
+- name: Fail Task if MD5 Hash Check Fails
+  fail:
+    msg: "MD5 Hash Check Fails. Please check the uploaded image!"
+  when: md5_hash_verification_results.stdout[0].find('Verified') == -1

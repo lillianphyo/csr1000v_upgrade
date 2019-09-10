@@ -1,0 +1,54 @@
+---
+# tasks file for upgrade
+
+- name: list file in bootflash
+  ios_command:
+    commands: "dir bootflash:"
+
+- name: delete all entries in the bootable image list
+  ios_config:
+    lines: no boot system
+
+- name: load new system image after the next system reload
+  ios_config:
+    lines: "boot system bootflash:/{{ new_image }}"
+
+- name: updates the GRUB menu list of images available in bootflash
+  vars:
+    ansible_command_timeout: 60
+  ios_command:
+    commands:
+      - command: wr
+        prompt: 'Building configuration...'
+        answer: '\r'
+
+- name: check configuration register setting
+  ios_command:
+    commands: show version
+
+- name: set configuration register
+  ios_config:
+    lines: config-register 0x2102
+
+- name: copy running configuration to the startup configuration
+  ios_command:
+    commands: 
+      - command: copy running-config startup-config
+        prompt: 'Destination filename \[startup-config\]'
+        answer: "\r"
+
+- name: reload the os
+  ios_command:
+    commands: 
+      - command: reload
+        prompt: 'Proceed with reload\? \[confirm\]'
+        answer: 'y'
+
+- name: wating for reboot
+  wait_for:
+    host: "{{ ansible_host }}"
+    port: 22
+    delay: 60
+    timeout: 350
+  connection: network_cli
+  delegate_to: localhost

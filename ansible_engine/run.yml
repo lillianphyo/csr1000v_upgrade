@@ -1,0 +1,21 @@
+---
+- hosts: "{{ router }}"
+  gather_facts: no
+  vars_files: ios_var.yml
+  tasks:
+    - name: include ios pre check
+      include_role: 
+        name: pre_check
+   
+    - name: include ios ftp tasks
+      include_role: 
+        name: ftp
+
+    - name: include ios upgrade tasks
+      include_role: 
+        name: upgrade
+ 
+    - name: include ios post check
+      include_role: 
+        name: post_check
+...

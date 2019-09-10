@@ -1,0 +1,10 @@
+---
+- name: csr 1000v ios upgrade actions
+  hosts: "{{ router }}"
+  connection: network_cli
+  gather_facts: no
+
+  tasks:
+  - name: ios upgrade
+    include_role:
+      name: upgrade

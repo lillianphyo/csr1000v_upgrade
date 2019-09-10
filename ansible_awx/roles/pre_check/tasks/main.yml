@@ -1,0 +1,55 @@
+---
+# tasks file for pre_check
+
+- name: gather facts before ios upgrade
+  ios_facts:
+
+- name: current state of router
+  ios_command:
+    commands: show ip int brief
+
+- name: current ios version
+  debug:
+    msg: "The current image verison before upgrade is {{ ansible_net_version }}"
+
+- name: list files in the bootflash
+  ios_command:
+    commands: "dir bootflash:"
+
+- name: ping check to gateways
+  ios_command:
+    commands: ping "{{ item }}"
+  with_items: "{{ gateways }}"
+
+- name: ping check to ftp
+  ios_command:
+    commands: ping "{{ ftp_server_ip }}"
+  register: ftp_ping_check
+
+- name: report unreachable
+  fail:
+    msg: "Ping test to ftp server {{ ftp_server_ip }} was fail"
+  when: ftp_ping_check.stdout[0].find("Success rate is 0 percent") != -1
+
+- name: check archive config
+  ios_command:
+    commands: sh archive
+  register: check_archive
+
+- name: put archive configuration
+  ios_config:
+    lines: 
+      - archive
+      - "path ftp://{{ ftp_server_ip }}/configuration_backup/{{ inventory_hostname }}"
+      - do wr
+  when: check_archive.stdout[0].find ("Archive feature not enabled") != -1
+
+- name: backup config file
+  ios_command:
+    commands: archive config
+
+- name: check archive result
+  ios_command:
+    commands: sh archive
+
+

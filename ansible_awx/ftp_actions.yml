@@ -1,0 +1,8 @@
+---
+- name: ftp actions
+  hosts: "{{ router }}"
+  connection: network_cli
+  gather_facts: no
+
+  roles:
+    - ftp
