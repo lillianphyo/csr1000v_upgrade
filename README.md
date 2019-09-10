@@ -45,24 +45,20 @@ AWX Ansible Tower
 ## Configuration
  
  You can edit all inventory file,ios_var.yml(variable file), playbooks and roles to change the workflow procedure. This is my references.
- https://docs.ansible.com/ansible/latest/user_guide/playbooks.html
- https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html
+ * https://docs.ansible.com/ansible/latest/user_guide/playbooks.html
+ * https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html
  
 ## Usage
 
-Ansible Engine
-$ansible-playbook run.yml -i inventory -vv
+Ansible Engine: $ansible-playbook run.yml -i inventory -vv
 
-Ansible AWX Tower
-Please reference this link (https://www.youtube.com/watch?v=64MJabLLtmg).
+Ansible AWX Tower: Please reference this link (https://www.youtube.com/watch?v=64MJabLLtmg).
 
 ## How to test the software
 
-Ansible Engine
-$ansible-playbook run.yml -i inventory --check -vv
+Ansible Engine: $ansible-playbook run.yml -i inventory --check -vv
 
-Ansible AWS Tower
-Please reference this link (https://www.youtube.com/watch?v=64MJabLLtmg).
+Ansible AWS Tower: Please reference this link (https://www.youtube.com/watch?v=64MJabLLtmg).
 
 ## Known issues
 
