@@ -1,52 +1,68 @@
-# cisco-csr1000v-ios-upgrade-downgrade
+# csr1000v_upgrade
 This repository is a template to be used when upgrading or downgrading cisco CSR1000v ios containing sample roles and playbooks to use with either Ansible Engine or AWX Ansible Tower, and to be made available for use by the Cisco DevNet community through Code Exchange.
 
 ## Instructions
 
-Ansible Engine 
-
-1. Download ansible_engine folder.
-2. 
+There are two options to test! You can choose with Ansible Engine or AWX Ansible Tower. With Ansible Engines, run.yml playbook will call roles as a single workflow to upgrade IOS.
+With AWX Ansible Tower, need to create Job Templates and a Workflow Template. Commnly need to update variables in ios_var.yml for your invenronment needs.
 
 ----
 
-# Project Title
+# csr1000v_upgrade
 
-Put a meaningful, short, plain-language description of what this code is trying to accomplish, what is the business driver for implementation, and in general why it matters. 
+To update IOS software one or more CISCO CSR1000v devices in one single view.
+
 
 Pro tips: 
 
-* Code Exchange displays the first few content lines of your README in the tile it creates for your repo. If you enter a GitHub Description, Code Exchange uses that instead. 
-* Code Exchange works best with READMEs formatted in [GitHub's flavor of Markdown](https://guides.github.com/features/mastering-markdown/). Support for reStructuredText is a work in progress.
+* Saving Time while updating multiple ios devices.
 
 Other things you might include:
 
-* Technology stack: Indicate the technological nature of the code, including primary programming language(s) and whether the code is intended as standalone or as a module in a framework or other ecosystem.
-* Status:  Alpha, Beta, 1.1, etc. It's OK to write a sentence, too. The goal is to let interested people know where what they can expect from this code.
-* Screenshot: If the code has visual components, place a screenshot after the description; e.g.,
-
-![add-image-here]()
+* Technology stack: This is nautre of infrastructure as a code using ansible , YAML is primary programming language(s) and codes are intended as ansible roles..
+* Status:  Alpha
+* Tutorial: https://www.youtube.com/watch?v=64MJabLLtmg
 
 
 ## Installation
 
-Detailed instructions on how to install, configure, and get the project running. Call out any dependencies. This should be frequently tested and updated to make sure it works reliably, accounts for updated versions of dependencies, etc.
+For Ansible Engine, download ansible_engine folder and execute run.yml.
+For Ansible AWX Tower, download ansible_awx folder to project directory or fork https://github.com/khinpyaephyosan/csr1000v_upgrade.git this url and run by creating a workflow tmplate.
+
+Ansible Engine
+
+1. Download ansible_engine folder.
+2. Edit variables in ios_var.yml for your environment
+3. Run run.yml
+
+AWX Ansible Tower
+
+1. Fork the https://github.com/khinpyaephyosan/csr1000v_upgrade.git link to your Github account
+2. Create a New Project with SCM TYPE is Git and Sync the project.
+3. Create each Job Template for pre_check_actions.yml, ftp_actions.yml, upgrade_actions.yml and post_check_actions.yml.
+4. Create and run Workflow Template which sequentially composed by connecting pre_check_actions.yml, ftp_actions.yml, upgrade_actions.yml and post_check_actions.yml Job Templates.
 
 ## Configuration
-
-If the code is configurable, describe it in detail, either here or in other documentation that you reference.
-
+ 
+ You can edit all inventory file,ios_var.yml(variable file), playbooks and roles to change the workflow procedure. This is my references.
+ https://docs.ansible.com/ansible/latest/user_guide/playbooks.html
+ https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html
+ 
 ## Usage
 
-Show users how to use the code. Be specific.
-Use appropriate formatting when showing code snippets or command line output.
-If a particular [DevNet Sandbox](https://developer.cisco.com/sandbox/) or [Learning Lab](https://developer.cisco.com/learning-labs/) can be used in to provide a network or other resources to be used with this code, call that out here. 
+Ansible Engine
+$ansible-playbook run.yml -i inventory -vv
+
+Ansible AWX Tower
+Please reference this link (https://www.youtube.com/watch?v=64MJabLLtmg).
 
 ## How to test the software
 
-Provide details on steps to test, versions of components/depencencies against which code was tested, date the code was last tested, etc. 
-If the repo includes automated tests, detail how to run those tests.
-If the repo is instrumented with a continuous testing framework, that is even better.
+Ansible Engine
+$ansible-playbook run.yml -i inventory --check -vv
+
+Ansible AWS Tower
+Please reference this link (https://www.youtube.com/watch?v=64MJabLLtmg).
 
 ## Known issues
 
@@ -54,18 +70,11 @@ Document any known significant shortcomings with the code. If using the [Issue T
 
 ## Getting help
 
-Instruct users how to get help with this code; this might include links to an issue tracker, wiki, mailing list, etc.
-
-**Example**
-
 If you have questions, concerns, bug reports, etc., please file an issue in this repository's [Issue Tracker](./issues).
 
 ## Getting involved
 
-This section should detail why people should get involved and describe key areas you are currently focusing on; e.g., trying to get feedback on features, fixing certain bugs, building important pieces, etc. Include information on how to setup a development environment if different from general installation instructions.
-
-General instructions on _how_ to contribute should be stated with a link to [CONTRIBUTING](./CONTRIBUTING.md).
-
+Because one or more CSR1000v devices are need to update in my environment. I just want to help this operation process faster.
 
 ----
 
@@ -85,7 +94,7 @@ Once a repo has been created, you can easily add a LICENSE file through the GitH
 
 Once you have created the LICENSE file, be sure to update/replace any templated fields with appropriate information, including the Copyright. For example, the [3-Clause BSD license template](https://opensource.org/licenses/BSD-3-Clause) has the following copyright notice:
 
-`Copyright (c) <YEAR>, <COPYRIGHT HOLDER>`
+`Copyright (c) <2019>, <Cisco Systems>`
 
 See the [LICENSE](./LICENSE) for this template repo as an example.
 
@@ -101,6 +110,6 @@ In the event you make use of 3rd party code, it is required by some licenses, an
 
 ## Credits and references
 
-1. Projects that inspired you
-2. Related projects
-3. Books, papers, talks, or other sources that have meaningful impact or influence on this code
+1. projects that I admire: https://developer.cisco.com/iot/
+2. related project: https://www.youtube.com/watch?v=E7H2_Q-gmC4
+3. other sources that have meaningful impact or influence on this code: https://developer.cisco.com/, https://www.ansible.com/
