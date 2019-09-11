@@ -1,0 +1,14 @@
+---
+
+router: 
+new_image: 
+ftp_server_ip:
+number_of_retries:
+md5_hash:
+desired_image_version:
+gateways:
+slack_webhook:
+slack_channel:
+
+#https://tproximus.blogspot.com/2019/07/how-to-generate-slack-webhooks.html
+...
