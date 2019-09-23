@@ -5,7 +5,7 @@ You can use this template to update the IOS XE software of one or more Cisco CSR
 
 * Technology stack: This is an example of infrastructure as a code using Ansible. YAML is primary programming language(s) and code is intended to be used as Ansible roles.
 * Status:  Alpha
-* Tutorial: [https://www.youtube.com/watch?v=64MJabLLtmg]()
+* Tutorial: https://www.youtube.com/watch?v=64MJabLLtmg
 
 ## Instructions
 
@@ -26,7 +26,7 @@ Ansible Engine
 
 AWX Ansible Tower
 
-1. Fork the [https://github.com/khinpyaephyosan/csr1000v_upgrade.git]() link to your Github account
+1. Fork the https://github.com/khinpyaephyosan/csr1000v_upgrade.git link to your Github account
 2. Create a New Project with SCM TYPE is Git and Sync the project.
 3. Create each Job Template for [pre_check_actions.yml](./ansible_awx/pre_check_actions.yml), [ftp_actions.yml](./ansible_awx/ftp_actions.yml), [upgrade_actions.yml](./ansible_awx/upgrade_actions.yml) and [post_check_actions.yml](./ansible_awx/post_check_actions.yml).
 4. Create and run Workflow Template, which is sequentially composed by connecting [pre_check_actions.yml](./ansible_awx/pre_check_actions.yml), [ftp_actions.yml](./ansible_awx/ftp_actions.yml), [upgrade_actions.yml](./ansible_awx/upgrade_actions.yml) and [post_check_actions.yml](./ansible_awx/post_check_actions.yml) Job Templates.
@@ -53,7 +53,7 @@ Ansible AWS Tower: Please reference this link https://www.youtube.com/watch?v=64
 
 ## Getting help
 
-If you have questions, concerns, bug reports, etc., please file an issue in this repository's [Issue Tracker](./issues).
+If you have questions, concerns, bug reports, etc., please file an issue in this repository's Issues list.
 
 ## Credits and references
 
