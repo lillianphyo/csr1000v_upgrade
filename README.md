@@ -35,20 +35,20 @@ AWX Ansible Tower
  
  You can edit `inventory.ini` file, `ios_var.yaml`(variable file), playbooks and roles to change the workflow procedure. These are my references.
  
- * [https://docs.ansible.com/ansible/latest/user_guide/playbooks.html]()
- * [https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html]()
+ * https://docs.ansible.com/ansible/latest/user_guide/playbooks.html
+ * https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html
  
 ## Usage
 
 Ansible Engine: $ansible-playbook run.yml -i inventory -vv
 
-Ansible AWX Tower: Please reference this link [https://www.youtube.com/watch?v=64MJabLLtmg]().
+Ansible AWX Tower: Please reference this link https://www.youtube.com/watch?v=64MJabLLtmg.
 
 ## How to test the software
 
 Ansible Engine: $ansible-playbook run.yml -i inventory --check -vv
 
-Ansible AWS Tower: Please reference this link [https://www.youtube.com/watch?v=64MJabLLtmg]().
+Ansible AWS Tower: Please reference this link https://www.youtube.com/watch?v=64MJabLLtmg.
 
 
 ## Getting help
@@ -57,6 +57,6 @@ If you have questions, concerns, bug reports, etc., please file an issue in this
 
 ## Credits and references
 
-1. projects that I admire: [https://developer.cisco.com/iot/]()
-2. related project: [https://www.youtube.com/watch?v=E7H2_Q-gmC4]()
-3. other sources that have meaningful impact or influence on this code: [https://developer.cisco.com/](), [https://www.ansible.com/]()
+1. projects that I admire: https://developer.cisco.com/iot/
+2. related project: https://www.youtube.com/watch?v=E7H2_Q-gmC4
+3. other sources that have meaningful impact or influence on this code: https://developer.cisco.com/, https://www.ansible.com/
