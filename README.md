@@ -1,7 +1,7 @@
 [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/khinpyaephyosan/csr1000v_upgrade)
 
 # CSR1000v Upgrade
-This repository is a template to be used when upgrading or downgrading the Cisco IOS XE software for an existing CSR1000v. It contains sample roles and playbooks to use with either Ansible Engine or AWX Ansible Tower. It is available for use by the Cisco DevNet community through Code Exchange.
+This repository is a template to be used when upgrading the Cisco IOS XE software for an existing CSR1000v. It contains sample roles and playbooks to use with either Ansible Engine or AWX Ansible Tower. It is available for use by the Cisco DevNet community through Code Exchange.
 
 You can use this template to update the IOS XE software of one or more Cisco CSR1000v devices in one single view.
 
