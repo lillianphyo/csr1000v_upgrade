@@ -60,3 +60,5 @@ If you have questions, concerns, bug reports, etc., please file an issue in this
 1. projects that I admire: https://developer.cisco.com/iot/
 2. related project: https://www.youtube.com/watch?v=E7H2_Q-gmC4
 3. other sources that have meaningful impact or influence on this code: https://developer.cisco.com/, https://www.ansible.com/
+
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/khinpyaephyosan/csr1000v_upgrade)
