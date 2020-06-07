@@ -7,7 +7,7 @@ You can use this template to update the IOS XE software of one or more Cisco CSR
 
 * Technology stack: This is an example of infrastructure as a code using Ansible. YAML is primary programming language(s) and code is intended to be used as Ansible roles.
 * Status:  Alpha
-* Tutorial: https://www.youtube.com/watch?v=64MJabLLtmg
+* Tutorial: https://www.youtube.com/watch?v=ADiRvV1BOHA
 
 ## Instructions
 
@@ -44,13 +44,13 @@ AWX Ansible Tower
 
 Ansible Engine: $ansible-playbook run.yml -i inventory -vv
 
-Ansible AWX Tower: Please reference this link https://www.youtube.com/watch?v=64MJabLLtmg.
+Ansible AWX Tower: Please reference this link https://www.youtube.com/watch?v=ADiRvV1BOHA
 
 ## How to test the software
 
 Ansible Engine: $ansible-playbook run.yml -i inventory --check -vv
 
-Ansible AWS Tower: Please reference this link https://www.youtube.com/watch?v=64MJabLLtmg.
+Ansible AWS Tower: Please reference this link https://www.youtube.com/watch?v=ADiRvV1BOHA
 
 
 ## Getting help
